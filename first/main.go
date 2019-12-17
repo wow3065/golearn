@@ -15,5 +15,6 @@ func main() {
 	if err == nil {
 		fmt.Println("主机名：" + hostname)
 	}
+	fmt.Println("this is person test.")
 
 }
