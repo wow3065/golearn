@@ -1,0 +1,33 @@
+{{ define "index" }}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+  <title>{{ .PageTitle }}</title>
+  <!-- 新 Bootstrap4 核心 CSS 文件 -->
+  <link rel="stylesheet" type="text/css" href="./static/bootstrap4/bootstrap.min.css" />
+
+  <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+  <script src="./static/bootstrap4/jquery.min.js"></script>
+
+  <!-- bootstrap.bundle.min.js 用于弹窗、提示、下拉菜单，包含了 popper.min.js -->
+  <script src="./static/bootstrap4/popper.min.js"></script>
+
+  <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+  <script src="./static/bootstrap4/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col" style="background-color:lavender;">.col</div>
+      <div class="col" style="background-color:orange;">.col</div>
+      <div class="col" style="background-color:lavender;">.col</div>
+    </div>
+  </div>
+</body>
+
+</html>
+{{ end }}
