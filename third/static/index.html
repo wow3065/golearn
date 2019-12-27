@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
-  <title>{{ .PageTitle }}</title>
+  <title>Welcome to tools</title>
   <!-- 新 Bootstrap4 核心 CSS 文件 -->
   <link rel="stylesheet" type="text/css" href="./static/bootstrap4/bootstrap.min.css" />
 
@@ -20,14 +20,80 @@
 </head>
 
 <body>
-  <div class="container-fluid">
+  <form id="testForm">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-4 form-group">
+          <label for="ip">IP:</label>
+          <input type="input" class="form-control" id="ip" placeholder="Enter IP">
+        </div>
+        <div class="col-2 form-group">
+          <label for="port">Port:</label>
+          <input type="input" class="form-control" id="port" placeholder="Enter Port">
+        </div>
+        <div class="col-3 form-group">
+          <label for="user">User:</label>
+          <input type="input" class="form-control" id="user" placeholder="Enter UserName">
+        </div>
+        <div class="col-3 form-group">
+          <label for="password">Password:</label>
+          <input type="password" class="form-control" id="password" placeholder="Enter Password">
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-10 form-group">
+          <label for="command">Command( ; split):</label>
+          <input type="input" class="form-control" id="command" placeholder="Enter Command">
+        </div>
+        <div class="col-1 m-auto">
+          <button type="button" class="btn btn-success" id="submit">提交</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="container-fluid" style="height: auto;">
     <div class="row">
-      <div class="col" style="background-color:lavender;">.col</div>
-      <div class="col" style="background-color:orange;">.col</div>
-      <div class="col" style="background-color:lavender;">.col</div>
+      <div class="col-12 form-group">
+        <label for="result">Result</label>
+        <textarea type="text" class="form-control" id="result" rows="15"></textarea>
+      </div>
     </div>
   </div>
 </body>
+<script>
+
+  $("#submit").click(function () {
+    ip = $("#ip").val().trim();
+    port = $("#port").val().trim();
+    user = $("#user").val().trim();
+    password = $("#password").val().trim();
+    command = $("#command").val().trim();
+
+    $.ajax({
+      async: true,
+      cache: false,
+      type: 'POST',
+      url: "/getCommand",
+      data:{
+        ip: ip, 
+        port: port, 
+        user: user, 
+        password: password, 
+        command: command 
+      },
+      error: function () {
+        alert("something wrong!!");
+      },
+      success: function (data) {
+        var jsonData = JSON.parse(data);
+        $("#result").val(jsonData["data"]);
+      }
+    })
+
+  });
+</script>
 
 </html>
 {{ end }}
