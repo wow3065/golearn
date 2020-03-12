@@ -67,7 +67,6 @@ func main() {
 	pwd, _ := os.Getwd()
 	root := filepath.ToSlash(pwd)
 
-	//root := "D:/Work/businessProject/梳理实验室培训材料/traindata"
 	rootPath = root + "/"
 
 	err := filepath.Walk(root, visit(&files))
